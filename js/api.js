@@ -40,6 +40,18 @@
 //     return await response.json();
 
 // }
+
+async function fetchOrder(orderId){
+
+    return await apiPost({
+
+        action:"getOrder",
+
+        orderId:orderId
+
+    });
+
+}
 async function apiPost(data){
 
     const formData = new URLSearchParams();
@@ -68,13 +80,20 @@ async function apiPost(data){
 
 async function createOrder(order){
 
-    return await apiPost({
+    // return await apiPost({
 
-        action:"saveOrder",
+    //     action:"saveOrder",
 
-        ...order
+    //     ...order
 
-    });
+    // });
+    window.location.replace(
+
+"checkout.html?orderId="+
+
+result.orderId
+
+);
 
 }
 

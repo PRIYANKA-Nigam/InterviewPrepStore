@@ -202,7 +202,19 @@ async function submitOrder(){
             throw result.message;
 
         }
+if(result.existingOrder){
 
+    window.location.replace(
+
+        "checkout.html?orderId=" +
+
+        result.orderId
+
+    );
+
+    return;
+
+}
 
        currentOrder = result;
         console.log(currentOrder);

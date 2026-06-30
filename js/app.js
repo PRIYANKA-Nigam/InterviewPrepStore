@@ -61,11 +61,9 @@ currentCampaign = params.get("campaign") || "";
 
 if(!currentProjectId || !currentProductType){
 
-    console.warn("No URL parameters found. Using test values.");
+    showToast("Invalid product link.");
 
-    currentProjectId = "Greetings";
-    currentCategory = "android";
-    currentProductType = "APK";
+    return;
 
 }
 
