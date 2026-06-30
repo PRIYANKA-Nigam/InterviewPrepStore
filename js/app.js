@@ -108,12 +108,9 @@ async function initializeCheckout(){
 
      if(!currentProjectId || !currentProductType){
 
-        showToast("Invalid product link.");
+    throw new Error("Invalid product link.");
 
-        return;
-
-    }
-
+}
     try{
 
         showLoader();
