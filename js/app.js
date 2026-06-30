@@ -61,9 +61,14 @@ currentCampaign = params.get("campaign") || "";
 
 if(!currentProjectId || !currentProductType){
 
-    showToast("Invalid product link.");
+    document.body.innerHTML = `
+        <div style="padding:40px;text-align:center;">
+            <h2>Invalid Product Link</h2>
+            <p>Please purchase through our official website.</p>
+        </div>
+    `;
 
-    return;
+    throw new Error("Invalid product link.");
 
 }
 
@@ -100,6 +105,14 @@ document.addEventListener(
 //======================================
 
 async function initializeCheckout(){
+
+     if(!currentProjectId || !currentProductType){
+
+        showToast("Invalid product link.");
+
+        return;
+
+    }
 
     try{
 
