@@ -79,27 +79,16 @@ async function apiPost(data){
 //======================================
 
 async function createOrder(order){
-return await apiPost({
 
-        action:"saveOrder",
+    const result = await apiPost({
+
+        action: "saveOrder",
 
         ...order
 
     });
-    // return await apiPost({
 
-    //     action:"saveOrder",
-
-    //     ...order
-
-    // });
-//     window.location.replace(
-
-// "checkout.html?orderId="+
-
-// result.orderId
-
-// );
+    return result;
 
 }
 
