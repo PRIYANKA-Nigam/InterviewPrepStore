@@ -35,24 +35,37 @@ let allProjects = [];
 //======================================
 // LOAD PROJECTS
 //======================================
+//======================================
+// BLOGGER JSON MAP
+//======================================
 
-async function loadProducts(){
+const BLOGGER_JSON = {
 
-    const android = await loadBloggerJson(
-        ANDROID_JSON_URL
-    );
+    android : ANDROID_JSON_URL,
 
-    const php = await loadBloggerJson(
-        PHP_JSON_URL
-    );
+    php : PHP_JSON_URL
 
-    allProjects = [
+};
 
-        ...android,
+async function loadProducts(category){
 
-        ...php
+    const url = BLOGGER_JSON[
+
+        category.toLowerCase()
 
     ];
+
+    if(!url){
+
+        throw new Error(
+
+            "Unknown category."
+
+        );
+
+    }
+
+    allProjects = await loadBloggerJson(url);
 
     return allProjects;
 
@@ -102,17 +115,59 @@ async function loadBloggerJson(url){
 //======================================
 // GET PRODUCT
 //======================================
+//======================================
+// GET PRODUCT
+//======================================
 
 function getProduct(projectId, productType){
 
-    return allProjects.find(
+    const project = allProjects.find(
+
+        p => p.id === projectId
+
+    );
+
+    if(!project){
+
+        return null;
+
+    }
+
+    const selectedProduct = project.products.find(
 
         p =>
 
-        p.id === projectId &&
-
-        p.type === productType
+        p.productType.toUpperCase() ===
+        productType.toUpperCase()
 
     );
+
+    if(!selectedProduct){
+
+        return null;
+
+    }
+
+    return{
+
+        id:project.id,
+
+        name:project.name,
+
+        desc:project.desc,
+
+        icon:project.icon,
+
+        type:project.type,
+
+        features:project.features,
+
+        productType:selectedProduct.productType,
+
+        price:selectedProduct.price,
+
+        deliveryType:selectedProduct.deliveryType
+
+    };
 
 }

@@ -2,6 +2,58 @@
 // Interview Prep For Insiders
 // app.js
 //=====================================================
+//======================================
+// URL PARAMETERS
+//======================================
+
+const params = new URLSearchParams(window.location.search);
+
+const currentProjectId =
+    params.get("projectId");
+
+const currentCategory =
+    params.get("category");
+
+const currentProductType =
+    params.get("productType");
+
+const currentRef =
+    params.get("ref") || "";
+
+const currentCampaign =
+    params.get("campaign") || "";
+
+    //======================================
+// VALIDATE URL
+//======================================
+
+if(!currentProjectId || !currentProductType){
+
+    document.body.innerHTML = `
+
+        <div class="container">
+
+            <h2>Invalid Product</h2>
+
+            <p>
+
+                Please purchase through our official Blogger website.
+
+            </p>
+
+            <a href="https://interviewprepforinsiders.blogspot.com">
+
+                Go to Website
+
+            </a>
+
+        </div>
+
+    `;
+
+    throw new Error("Invalid checkout URL.");
+
+}
 
 let allProjects = [];
 
@@ -28,9 +80,103 @@ let currentProductType = "";
 // INITIALIZE
 //=====================================================
 
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    initializeCheckout
+
+);
+
+//======================================
+// INITIALIZE CHECKOUT
+//======================================
+
+async function initializeCheckout(){
+
+    try{
+
+        showLoader();
+
+      await loadProducts(
+
+    currentCategory
+
+);
+
+        const product = getProduct(
+
+            currentProjectId,
+
+            currentProductType
+
+        );
+
+        if(!product){
+
+            throw new Error("Product not found.");
+
+        }
+
+        populateProduct(product);
+
+        createOrderForm(product);
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(error.message);
+
+    }
+
+    finally{
+
+        hideLoader();
+
+    }
+
+}
+
+function populateProduct(product){
+
+    document.getElementById(
+
+        "productIcon"
+
+    ).src = product.icon;
+
+    document.getElementById(
+
+        "productName"
+
+    ).textContent = product.name;
+
+    document.getElementById(
+
+        "productDescription"
+
+    ).textContent = product.desc;
+
+    document.getElementById(
+
+        "productType"
+
+    ).textContent = product.productType;
+
+    document.getElementById(
+
+        "productPrice"
+
+    ).textContent = formatPrice(product.price);
+
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 
-    loadProjects();
+   // loadProjects();
 
 });
 

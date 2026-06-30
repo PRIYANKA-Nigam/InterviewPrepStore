@@ -54,138 +54,113 @@ Interview Prep For Insiders
 
 </div>
 
-<nav>
-
 <ul class="nav-menu">
 
 <li>
 
-<a href="#">Home</a>
+<a href="https://interviewprepforinsiders.blogspot.com">
+
+Blog
+
+</a>
 
 </li>
 
 <li>
 
-<a href="#">Android</a>
+<a href="mailto:YOURMAIL">
 
-</li>
+Support
 
-<li>
-
-<a href="#">PHP</a>
-
-</li>
-
-<li>
-
-<a href="#">About</a>
+</a>
 
 </li>
 
 </ul>
-
-</nav>
 
 </div>
 
 </header>
 
 
-
 <!-- ==========================
-HERO
+CHECKOUT
 ========================== -->
 
-<section class="hero">
+<section class="checkout">
 
 <div class="container">
 
-<h1>
+<div id="productCard" class="checkout-card">
 
-Premium Source Code Store
+<div class="product-image">
 
-</h1>
+<img
+id="productIcon"
+src=""
+alt="Product">
+
+</div>
+
+<div class="product-details">
+
+<h2 id="productName">
+
+Loading...
+
+</h2>
+
+<p id="productDescription">
+
+Please wait...
+
+</p>
+
+<div class="price-box">
+
+<span id="productType">
+
+APK
+
+</span>
+
+<span id="productPrice">
+
+₹0
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="checkout-info">
 
 <p>
 
-Download complete Android Apps, PHP Projects and Source Code.
+✔ Secure manual verification
+
+</p>
+
+<p>
+
+✔ Download link sent by email
+
+</p>
+
+<p>
+
+✔ Usually delivered within 24 hours
 
 </p>
 
 </div>
 
-</section>
+<div id="checkoutContainer">
 
-
-
-<!-- ==========================
-SEARCH
-========================== -->
-
-<section class="search-section">
-
-<div class="container">
-
-<input
-id="searchBox"
-type="text"
-placeholder="Search Projects...">
-
-</div>
-
-</section>
-
-
-
-<!-- ==========================
-CATEGORY TABS
-========================== -->
-
-<section class="tabs">
-
-<div class="container">
-
-<button
-class="tab active"
-data-type="all">
-
-All
-
-</button>
-
-<button
-class="tab"
-data-type="android">
-
-Android
-
-</button>
-
-<button
-class="tab"
-data-type="php">
-
-PHP
-
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- ==========================
-PRODUCT GRID
-========================== -->
-
-<section class="products">
-
-<div class="container">
-
-<div
-id="productGrid"
-class="product-grid">
+<!-- app.js creates order form here -->
 
 </div>
 
@@ -207,13 +182,23 @@ class="loader hidden">
 
 <p>
 
-Loading Products...
+Loading Checkout...
 
 </p>
 
 </div>
 
+<div class="order-summary">
 
+    <h3>Order Summary</h3>
+
+    <p><b>Project:</b> <span id="summaryProject"></span></p>
+
+    <p><b>Product:</b> <span id="summaryType"></span></p>
+
+    <p><b>Amount:</b> <span id="summaryPrice"></span></p>
+
+</div>
 
 <!-- ==========================
 PAYMENT MODAL
