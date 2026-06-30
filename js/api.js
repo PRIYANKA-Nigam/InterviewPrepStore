@@ -79,7 +79,13 @@ async function apiPost(data){
 //======================================
 
 async function createOrder(order){
+return await apiPost({
 
+        action:"saveOrder",
+
+        ...order
+
+    });
     // return await apiPost({
 
     //     action:"saveOrder",
@@ -87,13 +93,13 @@ async function createOrder(order){
     //     ...order
 
     // });
-    window.location.replace(
+//     window.location.replace(
 
-"checkout.html?orderId="+
+// "checkout.html?orderId="+
 
-result.orderId
+// result.orderId
 
-);
+// );
 
 }
 
