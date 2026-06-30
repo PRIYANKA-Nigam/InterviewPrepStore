@@ -2,15 +2,11 @@
 // GLOBAL VARIABLES
 //======================================
 
-let currentOrder = null;
+// let currentOrder = null;
 
-let currentProjectId = "";
+// let currentProjectId = "";
 
-let currentProductType = "";
-
-//======================================
-// PRODUCTS CACHE
-//======================================
+// let currentProductType = "";
 
 //======================================
 // PRODUCTS CACHE
@@ -20,7 +16,11 @@ let currentProductType = "";
 // PRODUCTS CACHE
 //======================================
 
-let allProjects = [];
+//======================================
+// PRODUCTS CACHE
+//======================================
+
+// let allProjects = [];
 
 //======================================
 // BLOGGER JSON URLS

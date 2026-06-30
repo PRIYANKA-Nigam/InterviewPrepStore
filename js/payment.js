@@ -6,12 +6,12 @@
 //================ CONFIGURATION =====================
 
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycbyJ-WqvSwix4tuPeq-f76_m6bIlE5Z5mfiK5d9ePzFcMABHeFQJJWS-nZx33adrk8t1ww/exec";
+// const API_URL =
+// "https://script.google.com/macros/s/AKfycbyJ-WqvSwix4tuPeq-f76_m6bIlE5Z5mfiK5d9ePzFcMABHeFQJJWS-nZx33adrk8t1ww/exec";
 
-let currentProjectId = "";
-let currentProductType = "";
-let currentOrder = null;
+// let currentProjectId = "";
+// let currentProductType = "";
+// let currentOrder = null;
 //======================================
 // GLOBAL VARIABLES
 //======================================
@@ -25,7 +25,7 @@ function launchPayment(projectId, productType){
 
     currentProjectId = projectId;
     currentProductType = productType;
-
+ console.log("launchPayment called");
     createPaymentPopup();
 
 }
@@ -204,9 +204,8 @@ async function submitOrder(){
         }
 
 
-        currentOrder =
-        result.data;
-
+       currentOrder = result;
+        console.log(currentOrder);
 
         showPaymentScreen(
         name,

@@ -5,76 +5,85 @@
 //======================================
 // URL PARAMETERS
 //======================================
+let currentProjectId = "";
+let currentCategory = "";
+let currentProductType = "";
+let currentRef = "";
+let currentCampaign = "";
+
+ let currentOrder = null;
+
+
 
 const params = new URLSearchParams(window.location.search);
 
-const currentProjectId =
-    params.get("projectId");
+currentProjectId = params.get("projectId") || "";
 
-const currentCategory =
-    params.get("category");
+currentCategory = params.get("category") || "";
 
-const currentProductType =
-    params.get("productType");
+currentProductType = params.get("productType") || "";
 
-const currentRef =
-    params.get("ref") || "";
+currentRef = params.get("ref") || "";
 
-const currentCampaign =
-    params.get("campaign") || "";
+currentCampaign = params.get("campaign") || "";
 
     //======================================
 // VALIDATE URL
 //======================================
 
+// if(!currentProjectId || !currentProductType){
+
+//     document.body.innerHTML = `
+
+//         <div class="container">
+
+//             <h2>Invalid Product</h2>
+
+//             <p>
+
+//                 Please purchase through our official Blogger website.
+
+//             </p>
+
+//             <a href="https://interviewprepforinsiders.blogspot.com">
+
+//                 Go to Website
+
+//             </a>
+
+//         </div>
+
+//     `;
+
+//     throw new Error("Invalid checkout URL.");
+
+// }
+
 if(!currentProjectId || !currentProductType){
 
-    document.body.innerHTML = `
+    console.warn("No URL parameters found. Using test values.");
 
-        <div class="container">
-
-            <h2>Invalid Product</h2>
-
-            <p>
-
-                Please purchase through our official Blogger website.
-
-            </p>
-
-            <a href="https://interviewprepforinsiders.blogspot.com">
-
-                Go to Website
-
-            </a>
-
-        </div>
-
-    `;
-
-    throw new Error("Invalid checkout URL.");
+    currentProjectId = "Greetings";
+    currentCategory = "android";
+    currentProductType = "APK";
 
 }
 
-let allProjects = [];
+ let allProjects = [];
 
-let filteredProjects = [];
+// let filteredProjects = [];
 
-const productGrid = document.getElementById("productGrid");
+// const productGrid = document.getElementById("productGrid");
 
-const loader = document.getElementById("loader");
+// const loader = document.getElementById("loader");
 
-const searchBox = document.getElementById("searchBox");
+// const searchBox = document.getElementById("searchBox");
 
-const tabs = document.querySelectorAll(".tab");
+// const tabs = document.querySelectorAll(".tab");
 //======================================
 // GLOBAL VARIABLES
 //======================================
 
-let currentOrder = null;
-
-let currentProjectId = "";
-
-let currentProductType = "";
 
 //=====================================================
 // INITIALIZE
@@ -98,13 +107,31 @@ async function initializeCheckout(){
 
         showLoader();
 
-      await loadProducts(
+     const response = await fetchProduct(
 
-    currentCategory
+    currentProjectId,
+
+    currentProductType
 
 );
+console.log(response);
 
-        const product = getProduct(
+if(!response.success){
+
+    throw new Error(response.message);
+
+}
+
+
+        const product = response.product;
+
+        populateProduct(product);
+console.log(document.getElementById("buyButton"));
+document
+    .getElementById("buyButton")
+    .onclick = function(){
+
+        launchPayment(
 
             currentProjectId,
 
@@ -112,15 +139,7 @@ async function initializeCheckout(){
 
         );
 
-        if(!product){
-
-            throw new Error("Product not found.");
-
-        }
-
-        populateProduct(product);
-
-        createOrderForm(product);
+    };
 
     }
 
@@ -139,7 +158,6 @@ async function initializeCheckout(){
     }
 
 }
-
 function populateProduct(product){
 
     document.getElementById(
@@ -185,62 +203,62 @@ window.addEventListener("DOMContentLoaded", () => {
 // LOAD JSON FILES
 //=====================================================
 
-async function loadProjects(){
+// async function loadProjects(){
 
-    try{
+//     try{
 
-       showLoader();
+//        showLoader();
 
-        allProjects = await loadProducts();
+//         allProjects = await loadProducts();
 
-        filteredProjects = [...allProjects];
+//         filteredProjects = [...allProjects];
 
-        renderProjects(filteredProjects);
+//         renderProjects(filteredProjects);
 
-    }
-    catch(error){
+//     }
+//     catch(error){
 
-        console.error(error);
+//         console.error(error);
 
-    }
-    finally{
+//     }
+//     finally{
 
-       hideLoader();
+//        hideLoader();
 
-    }
+//     }
 
-}
+// }
 
 
 //=====================================================
 // RENDER PRODUCTS
 //=====================================================
 
-function renderProjects(projects){
+// function renderProjects(projects){
 
-    productGrid.innerHTML = "";
+//     productGrid.innerHTML = "";
 
-    if(projects.length===0){
+//     if(projects.length===0){
 
-        productGrid.innerHTML =
+//         productGrid.innerHTML =
 
-        "<h2>No Products Found.</h2>";
+//         "<h2>No Products Found.</h2>";
 
-        return;
+//         return;
 
-    }
+//     }
 
-    projects.forEach(project=>{
+//     projects.forEach(project=>{
 
-        productGrid.appendChild(
+//         productGrid.appendChild(
 
-            createCard(project)
+//             createCard(project)
 
-        );
+//         );
 
-    });
+//     });
 
-}
+// }
 
 
 //=====================================================
@@ -344,87 +362,87 @@ function createCard(project){
 // SEARCH
 //=====================================================
 
-searchBox.addEventListener("input",function(){
+// searchBox.addEventListener("input",function(){
 
-    const keyword=this.value
+//     const keyword=this.value
 
-    .trim()
+//     .trim()
 
-    .toLowerCase();
+//     .toLowerCase();
 
-    filteredProjects=
+//     filteredProjects=
 
-    allProjects.filter(project=>{
+//     allProjects.filter(project=>{
 
-        return(
+//         return(
 
-            project.name
+//             project.name
 
-            .toLowerCase()
+//             .toLowerCase()
 
-            .includes(keyword)
+//             .includes(keyword)
 
-            ||
+//             ||
 
-            project.desc
+//             project.desc
 
-            .toLowerCase()
+//             .toLowerCase()
 
-            .includes(keyword)
+//             .includes(keyword)
 
-        );
+//         );
 
-    });
+//     });
 
-    renderProjects(filteredProjects);
+//     renderProjects(filteredProjects);
 
-});
+// });
 
 
 //=====================================================
 // CATEGORY FILTER
 //=====================================================
 
-tabs.forEach(tab=>{
+// tabs.forEach(tab=>{
 
-    tab.addEventListener("click",()=>{
+//     tab.addEventListener("click",()=>{
 
-        tabs.forEach(t=>
+//         tabs.forEach(t=>
 
-            t.classList.remove("active")
+//             t.classList.remove("active")
 
-        );
+//         );
 
-        tab.classList.add("active");
+//         tab.classList.add("active");
 
-        const type=
+//         const type=
 
-        tab.dataset.type;
+//         tab.dataset.type;
 
-        if(type==="all"){
+//         if(type==="all"){
 
-            filteredProjects=[
+//             filteredProjects=[
 
-                ...allProjects
+//                 ...allProjects
 
-            ];
+//             ];
 
-        }
+//         }
 
-        else{
+//         else{
 
-            filteredProjects=
+//             filteredProjects=
 
-            allProjects.filter(project=>
+//             allProjects.filter(project=>
 
-                project.type===type
+//                 project.type===type
 
-            );
+//             );
 
-        }
+//         }
 
-        renderProjects(filteredProjects);
+//         renderProjects(filteredProjects);
 
-    });
+//     });
 
-});
+// });

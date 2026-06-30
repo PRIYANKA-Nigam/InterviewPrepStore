@@ -9,34 +9,59 @@
 // GLOBAL VARIABLES
 //======================================
 
-let currentOrder = null;
+// let currentOrder = null;
 
-let currentProjectId = "";
+// let currentProjectId = "";
 
-let currentProductType = "";
+// let currentProductType = "";
 
 //======================================
 // POST REQUEST
 //======================================
 
+// async function apiPost(data){
+
+//     const formData = new URLSearchParams();
+
+//     Object.keys(data).forEach(key => {
+
+//         formData.append(key, data[key]);
+
+//     });
+
+//     const response = await fetch(API_URL,{
+
+//         method:"POST",
+
+//         body:formData
+
+//     });
+
+//     return await response.json();
+
+// }
 async function apiPost(data){
 
-    const response = await fetch(API_URL,{
+    const formData = new URLSearchParams();
 
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify(data)
-
+    Object.keys(data).forEach(key=>{
+        formData.append(key,data[key]);
     });
 
-    return await response.json();
+    const response = await fetch(API_URL,{
+        method:"POST",
+        body:formData
+    });
+
+    console.log("HTTP Status =", response.status);
+
+    const text = await response.text();
+
+    console.log("RAW RESPONSE =", text);
+
+    return JSON.parse(text);
 
 }
-
 //======================================
 // CREATE ORDER
 //======================================
@@ -64,6 +89,24 @@ async function uploadPaymentScreenshot(data){
         action:"uploadScreenshot",
 
         ...data
+
+    });
+
+}
+
+//======================================
+// GET PRODUCT
+//======================================
+
+async function fetchProduct(projectId, productType){
+
+    return await apiPost({
+
+        action:"getProduct",
+
+        projectId,
+
+        productType
 
     });
 
