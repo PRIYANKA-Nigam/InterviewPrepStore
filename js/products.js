@@ -1,43 +1,4 @@
-//======================================
-// GLOBAL VARIABLES
-//======================================
 
-// let currentOrder = null;
-
-// let currentProjectId = "";
-
-// let currentProductType = "";
-
-//======================================
-// PRODUCTS CACHE
-//======================================
-
-//======================================
-// PRODUCTS CACHE
-//======================================
-
-//======================================
-// PRODUCTS CACHE
-//======================================
-
-// let allProjects = [];
-
-//======================================
-// BLOGGER JSON URLS
-//======================================
-
-// const ANDROID_JSON_URL =
-// "https://interviewprepforinsiders.blogspot.com/p/project-data.html";
-
-// const PHP_JSON_URL =
-// "https://interviewprepforinsiders.blogspot.com/p/project-php-data.html";
-
-//======================================
-// LOAD PROJECTS
-//======================================
-//======================================
-// BLOGGER JSON MAP
-//======================================
 
 const BLOGGER_JSON = {
 

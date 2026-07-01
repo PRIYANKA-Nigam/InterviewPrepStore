@@ -20,7 +20,12 @@
 //====================================================
 // OPEN PAYMENT POPUP
 //====================================================
-
+const REAL_UPI_ID =
+"8932946515@pthdfc";
+const BANK_ACCOUNT =
+"1234567890123456";
+const BANK_IFSC =
+"HDFC0001234";
 function launchPayment(projectId, productType){
 
     currentProjectId = projectId;
@@ -264,117 +269,157 @@ function showPaymentScreen(customerName, customerEmail){
 
     body.innerHTML = `
 
-    <h3>Order Created Successfully</h3>
+   <h2 class="payment-title">
 
-    <p>
+🎉 Order Created Successfully
 
-    <b>Order ID:</b>
+</h2>
 
-    ${currentOrder.orderId}
+<div class="payment-card">
 
-    </p>
+<div class="payment-row">
 
-    <p>
+<span>Order ID</span>
 
-    <b>Amount:</b>
-
-    ₹${currentOrder.amount}
-
-    </p>
-
-    <div class="qr-container">
-
-       <div
-id="qrcode"
-class="qr-image">
+<b>${currentOrder.orderId}</b>
 
 </div>
 
-    </div>
+<div class="payment-row">
 
-    <div class="upi-box">
+<span>Amount</span>
 
-        ${currentOrder.upiId}
+<b>₹${currentOrder.amount}</b>
 
-    </div>
+</div>
 
-   <div class="payment-buttons">
+<hr>
+
+<div id="qrcode" class="qr-image"></div>
+
+<div class="payment-section">
+
+<h3>UPI Payment</h3>
+
+<p class="masked-text">
+
+••••••••••••••
+
+</p>
 
 <button
-class="btn btn-primary"
-onclick="openUPI()">
-
-Pay Now
-
-</button>
-
-<button
-class="btn btn-secondary"
+class="btn-orange full-btn"
 onclick="copyUPI()">
 
-Copy UPI
+📋 Copy UPI ID
 
 </button>
 
 </div>
+
+<hr>
+
+<div class="payment-section">
+
+<h3>
+
+Bank Transfer
+
+</h3>
+
+<div class="bank-row">
+
+<span>
+
+Account Number
+
+</span>
+
+<span>
+
+••••3456
+
+</span>
+
+<button onclick="copyBankAccount()">
+
+Copy
+
+</button>
+
+</div>
+
+<div class="bank-row">
+
+<span>
+
+IFSC
+
+</span>
+
+<span>
+
+••••1234
+
+</span>
+
+<button onclick="copyIFSC()">
+
+Copy
+
+</button>
+
+</div>
+
+</div>
+
+<hr>
 
 <div class="payment-buttons">
 
 <button
-class="btn btn-secondary"
-onclick="copyOrderId()">
-
-Copy Order ID
-
-</button>
-
-<button
-class="btn btn-secondary"
+class="btn-green"
 onclick="shareWhatsapp()">
 
 WhatsApp
 
 </button>
 
-</div>
-
-<div class="payment-buttons">
-
 <button
-class="btn btn-secondary"
+class="btn-blue"
 onclick="mailSupport()">
 
-Email Screenshot
+Email
 
 </button>
 
 </div>
-<hr style="margin:25px 0;">
 
-<h3>Upload Payment Screenshot</h3>
+<hr>
 
-<p style="font-size:14px;color:#666;">
-Supported formats: JPG, JPEG, PNG (Max 5 MB)
-</p>
+<h3>
+
+Upload Payment Screenshot
+
+</h3>
 
 <input
 type="file"
 id="paymentScreenshot"
-accept="image/png,image/jpeg,image/jpg">
+accept="image/*">
 
 <button
-class="btn btn-primary"
-style="margin-top:15px;"
+class="btn-orange full-btn"
 onclick="uploadScreenshot()">
 
-📤 Upload Screenshot
+Upload Screenshot
 
 </button>
 
-<div
-id="uploadStatus"
-style="margin-top:15px;"></div>
-    </div>
+<div id="uploadStatus"></div>
+
+</div>
+
 
     <div class="payment-note">
 
@@ -466,16 +511,15 @@ function copyUPI(){
 
     navigator.clipboard.writeText(
 
-        currentOrder.upiId
+          REAL_UPI_ID
 
     );
 
-    alert(
+     showToast(
 
         "UPI ID copied."
 
     );
-
 }
 
 //====================================================
@@ -673,5 +717,47 @@ async function uploadScreenshot(){
     };
 
     reader.readAsDataURL(file);
+
+}
+
+function copyBankAccount(){
+
+    navigator.clipboard.writeText(
+
+        BANK_ACCOUNT
+
+    );
+
+    showToast(
+
+        "Account number copied."
+
+    );
+
+}
+
+function copyIFSC(){
+
+   navigator.clipboard.writeText(
+
+BANK_IFSC
+
+);
+
+showToast(
+
+"IFSC copied."
+
+);
+
+}
+
+function maskAccount(account){
+
+    return
+
+    "XXXXXXXX"+
+
+    account.slice(-4);
 
 }

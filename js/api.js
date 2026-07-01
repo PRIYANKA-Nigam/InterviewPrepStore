@@ -1,127 +1,85 @@
-//======================================
-// API CONFIGURATION
-//======================================
 
-// const API_URL =
-// "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
+    async function fetchOrder(orderId){
 
-//======================================
-// GLOBAL VARIABLES
-//======================================
+        return await apiPost({
 
-// let currentOrder = null;
+            action:"getOrder",
 
-// let currentProjectId = "";
+            orderId:orderId
 
-// let currentProductType = "";
+        });
 
-//======================================
-// POST REQUEST
-//======================================
+    }
+    async function apiPost(data){
 
-// async function apiPost(data){
+        const formData = new URLSearchParams();
 
-//     const formData = new URLSearchParams();
+        Object.keys(data).forEach(key=>{
+            formData.append(key,data[key]);
+        });
 
-//     Object.keys(data).forEach(key => {
+        const response = await fetch(API_URL,{
+            method:"POST",
+            body:formData
+        });
 
-//         formData.append(key, data[key]);
+        console.log("HTTP Status =", response.status);
 
-//     });
+        const text = await response.text();
 
-//     const response = await fetch(API_URL,{
+        console.log("RAW RESPONSE =", text);
 
-//         method:"POST",
+        return JSON.parse(text);
 
-//         body:formData
+    }
+    //======================================
+    // CREATE ORDER
+    //======================================
 
-//     });
+    async function createOrder(order){
 
-//     return await response.json();
+        const result = await apiPost({
 
-// }
+            action: "saveOrder",
 
-async function fetchOrder(orderId){
+            ...order
 
-    return await apiPost({
+        });
 
-        action:"getOrder",
+        return result;
 
-        orderId:orderId
+    }
 
-    });
+    //======================================
+    // UPLOAD SCREENSHOT
+    //======================================
 
-}
-async function apiPost(data){
+    async function uploadPaymentScreenshot(data){
 
-    const formData = new URLSearchParams();
+        return await apiPost({
 
-    Object.keys(data).forEach(key=>{
-        formData.append(key,data[key]);
-    });
+            action:"uploadScreenshot",
 
-    const response = await fetch(API_URL,{
-        method:"POST",
-        body:formData
-    });
+            ...data
 
-    console.log("HTTP Status =", response.status);
+        });
 
-    const text = await response.text();
+    }
 
-    console.log("RAW RESPONSE =", text);
+    //======================================
+    // GET PRODUCT
+    //======================================
 
-    return JSON.parse(text);
+    async function fetchProduct(projectId, productType){
 
-}
-//======================================
-// CREATE ORDER
-//======================================
+        return await apiPost({
 
-async function createOrder(order){
+            action:"getProduct",
 
-    const result = await apiPost({
+            projectId,
 
-        action: "saveOrder",
+            productType
 
-        ...order
+        });
 
-    });
-
-    return result;
-
-}
-
-//======================================
-// UPLOAD SCREENSHOT
-//======================================
-
-async function uploadPaymentScreenshot(data){
-
-    return await apiPost({
-
-        action:"uploadScreenshot",
-
-        ...data
-
-    });
-
-}
-
-//======================================
-// GET PRODUCT
-//======================================
-
-async function fetchProduct(projectId, productType){
-
-    return await apiPost({
-
-        action:"getProduct",
-
-        projectId,
-
-        productType
-
-    });
-
-}
+    }

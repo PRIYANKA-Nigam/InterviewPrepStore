@@ -1,0 +1,391 @@
+body{
+    margin:0;
+    padding:30px;
+    background:#f5f5f5;
+    font-family:Poppins,Arial,sans-serif;
+}
+
+.checkout-container{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+.card{
+
+    background:#fff;
+
+    border-radius:14px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.card h2,
+.card h3{
+
+    margin-top:0;
+
+}
+
+.product-header{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+}
+
+.product-icon{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:16px;
+
+    object-fit:cover;
+
+    background:#eee;
+
+}
+
+.product-details{
+
+    flex:1;
+
+}
+
+.product-name{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.product-type{
+
+    display:inline-block;
+
+    background:#ff6f00;
+
+    color:#fff;
+
+    padding:6px 15px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+}
+
+.product-price{
+
+    font-size:34px;
+
+    color:#ff6f00;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+.feature-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.feature-list li{
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eee;
+
+    font-size:16px;
+
+}
+
+.feature-list li:last-child{
+
+    border:none;
+
+}
+
+.trust-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.trust-item{
+
+    background:#fafafa;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    text-align:center;
+
+    font-weight:600;
+
+}
+.payment-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+.payment-buttons button{
+
+    flex:1;
+
+}
+
+.btn-orange{
+
+    background:#ff6f00;
+
+    color:white;
+
+}
+
+.btn-green{
+
+    background:#25D366;
+
+    color:white;
+
+}
+
+.btn-blue{
+
+    background:#1976d2;
+
+    color:white;
+
+}
+
+.btn-orange,
+.btn-green,
+.btn-blue{
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:14px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+}
+
+@media(max-width:700px){
+
+.product-header{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.payment-buttons{
+
+    flex-direction:column;
+
+}
+
+.product-name{
+
+    font-size:24px;
+
+}
+
+.product-price{
+
+    font-size:28px;
+
+}
+
+} 
+
+.bank-card{
+
+    margin-top:20px;
+
+    background:#fafafa;
+
+    border-radius:10px;
+
+    padding:18px;
+
+}
+
+.bank-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:12px 0;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.bank-row button{
+
+    background:#ff6f00;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:6px;
+
+    padding:8px 14px;
+
+    cursor:pointer;
+
+}
+
+.bank-row b{
+
+    word-break:break-all;
+
+}
+
+.payment-card{
+
+background:white;
+
+border-radius:15px;
+
+padding:25px;
+
+box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+}
+
+.payment-title{
+
+text-align:center;
+
+margin-bottom:25px;
+
+color:#ff6f00;
+
+}
+
+.payment-row{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:12px 0;
+
+font-size:17px;
+
+}
+
+.payment-section{
+
+margin:25px 0;
+
+text-align:center;
+
+}
+
+.full-btn{
+
+width:100%;
+
+margin-top:15px;
+
+}
+
+.masked-text{
+
+font-size:18px;
+
+letter-spacing:4px;
+
+font-weight:bold;
+
+color:#777;
+
+}
+
+hr{
+
+border:none;
+
+height:1px;
+
+background:#ececec;
+
+margin:25px 0;
+
+}
+.store-header{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+.store-header h1{
+
+color:#ff6f00;
+
+margin:0;
+
+font-size:36px;
+
+}
+
+.store-header p{
+
+color:#666;
+
+margin-top:8px;
+
+}

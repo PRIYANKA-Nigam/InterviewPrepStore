@@ -1,48 +1,3 @@
-<!-- <div id="paymentModal" class="payment-modal hidden">
-
-    <div id="paymentContent">
-
-    </div>
-
-</div>
-<div id="loader" class="loader hidden">
-
-    <div class="spinner"></div>
-
-</div>
-<div id="toast"></div>
-
-<div class="checkout-card">
-
-    <img id="productIcon" width="120">
-
-    <h2 id="productName"></h2>
-
-    <p id="productDescription"></p>
-
-    <p>
-        Product :
-        <span id="productType"></span>
-    </p>
-
-    <h3 id="productPrice"></h3>
-<button id="buyButton">
-    Buy Now
-</button>
-</div>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<script src="js/config.js"></script>
-
-<script src="js/utils.js"></script>
-
-<script src="js/api.js"></script>
-
-<script src="js/payment.js"></script>
-
-<script src="js/app.js"></script> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,12 +12,130 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/payment.css">
+<link rel="stylesheet" href="css/checkout.css">
 
 </head>
 
 <body>
+    <div class="store-header">
 
+<h1>
+
+Interview Prep For Insiders
+
+</h1>
+
+<p>
+
+Secure Digital Product Checkout
+
+</p>
+
+</div>
 <div class="checkout-container">
+
+    <div class="card">
+
+        <div class="product-header">
+
+            <img
+                id="productIcon"
+                class="product-icon"
+                src=""
+                alt="Product">
+
+            <div class="product-details">
+
+                <div
+                    id="productName"
+                    class="product-name">
+                </div>
+
+                <div
+                    id="productType"
+                    class="product-type">
+                </div>
+
+                <div
+                    id="productPrice"
+                    class="product-price">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>About this Product</h3>
+
+        <p id="productShortDesc"></p>
+
+        <details>
+
+            <summary>Read Full Description</summary>
+
+            <p id="productDescription"></p>
+
+        </details>
+
+    </div>
+
+    <div class="card">
+
+        <h3>What You'll Learn</h3>
+
+        <ul
+            id="productFeatures"
+            class="feature-list">
+        </ul>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Why Buy From Us</h3>
+
+        <div class="trust-grid">
+
+            <div class="trust-item">
+                ✅ Secure Purchase
+            </div>
+
+            <div class="trust-item">
+                📧 Email Delivery
+            </div>
+
+            <div class="trust-item">
+                🔒 Manual Verification
+            </div>
+
+            <div class="trust-item">
+                💬 Technical Support
+            </div>
+
+        </div>
+
+    </div>
+
+  <div class="card">
+
+    <button
+        id="buyButton"
+        class="btn btn-primary"
+        style="width:100%;font-size:18px;">
+
+        Buy Now
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- <div class="checkout-container">
 
     <div class="checkout-card">
 
@@ -99,7 +172,7 @@
 
     </div>
 
-</div>
+</div> -->
 
 
 
@@ -151,6 +224,9 @@
 <script src="js/payment.js"></script>
 
 <script src="js/app.js"></script>
+<link
+rel="stylesheet"
+href="css/checkout.css">
 
 </body>
 
