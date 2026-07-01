@@ -1,31 +1,12 @@
-//====================================================
-// Interview Prep For Insiders
-// payment.js
-//====================================================
 
-//================ CONFIGURATION =====================
-
-
-// const API_URL =
-// "https://script.google.com/macros/s/AKfycbyJ-WqvSwix4tuPeq-f76_m6bIlE5Z5mfiK5d9ePzFcMABHeFQJJWS-nZx33adrk8t1ww/exec";
-
-// let currentProjectId = "";
-// let currentProductType = "";
-// let currentOrder = null;
-//======================================
-// GLOBAL VARIABLES
-//======================================
-
-
-//====================================================
-// OPEN PAYMENT POPUP
-//====================================================
 const REAL_UPI_ID =
 "8932946515@pthdfc";
 const BANK_ACCOUNT =
 "1234567890123456";
 const BANK_IFSC =
 "HDFC0001234";
+
+
 
 function launchPayment(projectId, productType){
 
@@ -546,7 +527,17 @@ Email
         </ul>
 
     </div>
+<div style="margin-top:20px;">
 
+<button
+class="btn-orange full-btn"
+onclick="backToArticle()">
+
+🏠 Back to Article
+
+</button>
+
+</div>
     `;
 const qrContainer =
 document.getElementById("qrcode");
@@ -786,6 +777,11 @@ async function uploadScreenshot(){
 
                 status.innerHTML =
                 "<span style='color:green;'>✅ Screenshot uploaded successfully. Please wait while we verify your payment.</span>";
+                 setTimeout(function(){
+
+        showVerificationSubmitted();
+
+    },2000);
 
             }else{
 
@@ -793,6 +789,7 @@ async function uploadScreenshot(){
                 "<span style='color:red;'>"+result.message+"</span>";
 
             }
+           
 
         }catch(e){
 
@@ -868,6 +865,17 @@ function showPurchaseHistory(orders){
     We found previous purchases for this product.
 
     </p>
+    <div style="margin-top:20px;">
+
+<button
+class="btn-orange full-btn"
+onclick="backToArticle()">
+
+🏠 Back to Article
+
+</button>
+
+</div>
 
     `;
 
@@ -1050,5 +1058,67 @@ function renderCustomerForm(){
         </button>
 
     `;
+
+}
+
+function showVerificationSubmitted(){
+
+    const modal = document.createElement("div");
+
+    modal.className = "verification-modal";
+
+    modal.innerHTML = `
+
+    <div class="verification-box">
+
+        <h2>✅ Payment Screenshot Submitted</h2>
+
+        <p>
+
+            Thank you for submitting your payment screenshot.
+
+        </p>
+
+        <p>
+
+            Our team is verifying your payment details.
+
+        </p>
+
+        <p>
+
+            Once verified, your purchased files will be sent to your registered email address.
+
+        </p>
+
+        <p>
+
+            <b>Please allow up to 24 hours.</b>
+
+        </p>
+
+        <button
+        class="btn-orange full-btn"
+        onclick="this.closest('.verification-modal').remove()">
+
+            Close
+
+        </button>
+<div style="margin-top:20px;">
+
+<button
+class="btn-orange full-btn"
+onclick="backToArticle()">
+
+🏠 Back to Article
+
+</button>
+
+</div>
+    </div>
+
+    `;
+
+    document.body.appendChild(modal);
 
 }

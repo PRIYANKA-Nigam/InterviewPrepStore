@@ -13,6 +13,15 @@ const API_URL =
 // STORE
 //======================================
 
+const BLOGGER_POST_URL =
+"https://interviewprepforinsiders.blogspot.com/2026/06/android-app-projects-with-source-code.html";
+
+function backToArticle(){
+
+    window.location.href = BLOGGER_POST_URL;
+
+}
+
 const STORE_NAME =
 "Interview Prep For Insiders";
 
