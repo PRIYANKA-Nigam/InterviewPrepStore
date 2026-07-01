@@ -169,21 +169,52 @@ function populateProduct(product){
     document.getElementById("productShortDesc").textContent =
         words.slice(0,20).join(" ") + "...";
 
-    const featureList =
-        document.getElementById("productFeatures");
+   const featureList = document.getElementById("productFeatures");
 
-    featureList.innerHTML = "";
+featureList.innerHTML = "";
 
-    if(product.features){
+if (product.features && product.features.length) {
 
-        product.features.forEach(function(feature){
+    product.features.forEach(feature => {
 
-            featureList.innerHTML +=
-            "<li>✔ " + feature + "</li>";
+        featureList.innerHTML += `
+            <li>
+                <span class="tick">✔</span>
+                ${feature}
+            </li>
+        `;
 
-        });
+    });
 
-    }
+} else {
+
+    featureList.innerHTML = `
+        <li>
+            <span class="tick">✔</span>
+            Complete source code with documentation
+        </li>
+
+        <li>
+            <span class="tick">✔</span>
+            Easy to understand project structure
+        </li>
+
+        <li>
+            <span class="tick">✔</span>
+            Ready to build and deploy
+        </li>
+
+        <li>
+            <span class="tick">✔</span>
+            Interview preparation material
+        </li>
+
+        <li>
+            <span class="tick">✔</span>
+            Lifetime access after approval
+        </li>
+    `;
+}
 
 }
 window.addEventListener("DOMContentLoaded", () => {

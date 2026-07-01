@@ -294,12 +294,18 @@ function showPaymentScreen(customerName, customerEmail){
 </div>
 
 <hr>
+<div class="qr-section" id="qrcode">
 
-<div id="qrcode" class="qr-image"></div>
+<img id="qrImage" class="qr-image">
+
+</div>
 
 <div class="payment-section">
 
-<h3>UPI Payment</h3>
+<h3 class="payment-heading">
+<span class="payment-step">1</span>
+
+Scan & Pay using UPI / QR</h3>
 
 <p class="masked-text">
 
@@ -319,9 +325,45 @@ onclick="copyUPI()">
 
 <hr>
 
+<div class="payment-card paypal-card">
+
+    <h3 class="payment-heading">
+
+        <span class="payment-step">2</span>
+
+        International Payment (PayPal)
+
+    </h3>
+<div class="paypal-note">
+
+After successful PayPal payment, please upload your PayPal payment receipt or screenshot below for manual verification.
+
+</div>
+    <p class="payment-desc">
+
+        For customers outside India.
+
+    </p>
+
+    <a
+        href="https://www.paypal.com/ncp/payment/CGQLYWWVBXK5L"
+        target="_blank"
+        class="paypal-btn">
+
+        <img
+            src="images/paypal.png"
+            alt="PayPal">
+
+        <span>Pay with PayPal</span>
+
+    </a>
+
+</div>
+<hr>
 <div class="payment-section">
 
-<h3>
+<h3 class="payment-heading">
+<span class="payment-step">3</span>
 
 Bank Transfer
 
@@ -375,27 +417,6 @@ Copy
 
 <hr>
 
-<div class="payment-buttons">
-
-<button
-class="btn-green"
-onclick="shareWhatsapp()">
-
-WhatsApp
-
-</button>
-
-<button
-class="btn-blue"
-onclick="mailSupport()">
-
-Email
-
-</button>
-
-</div>
-
-<hr>
 
 <h3>
 
@@ -409,14 +430,53 @@ id="paymentScreenshot"
 accept="image/*">
 
 <button
-class="btn-orange full-btn"
-onclick="uploadScreenshot()">
+class="btn-orange full-btn primary-btn"
+onclick="uploadScreenshot()"
+id="uploadScreenshotBtn"
+>
 
 Upload Screenshot
 
 </button>
 
 <div id="uploadStatus"></div>
+<hr>
+<div class="payment-card">
+
+<h3>Need Help?</h3>
+
+<p>
+
+Facing any issue during payment?
+Contact us below.
+
+</p>
+
+<div class="support-buttons">
+
+<button
+onclick="shareWhatsapp()"
+id="whatsappBtn"
+class="support-btn whatsapp btn-green">
+
+WhatsApp
+
+</button>
+
+<button
+ id="emailBtn"
+class="support-btn email btn-blue"
+onclick="mailSupport()">
+
+Email
+
+</button>
+
+</div>
+
+</div>
+
+<hr>
 
 </div>
 

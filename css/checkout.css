@@ -389,3 +389,208 @@ color:#666;
 margin-top:8px;
 
 }
+
+#productFeatures{
+
+    margin:15px 0 0;
+    padding:0;
+
+}
+
+#productFeatures li{
+
+    list-style:none;
+
+    display:flex;
+
+    align-items:center;
+
+    margin:12px 0;
+
+    font-size:15px;
+
+    color:#444;
+
+}
+
+.tick{
+
+    color:#16a34a;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+    margin-right:10px;
+
+}
+.trust-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+margin-top:18px;
+
+}
+
+.trust-item{
+
+display:flex;
+
+align-items:flex-start;
+
+padding:15px;
+
+background:#fafafa;
+
+border-radius:12px;
+
+}
+
+.trust-item .icon{
+
+font-size:28px;
+
+margin-right:12px;
+
+}
+
+.trust-item p{
+
+margin-top:5px;
+
+font-size:13px;
+
+color:#666;
+
+}
+.qr-section{
+
+text-align:center;
+
+margin:20px auto;
+
+}
+
+#qrImage{
+
+display:block;
+
+margin:0 auto;
+
+width:220px;
+
+height:220px;
+
+}
+
+.payment-heading{
+
+display:flex;
+
+align-items:center;
+
+margin:25px 0 15px;
+
+font-size:18px;
+
+}
+
+.payment-step{
+
+width:28px;
+
+height:28px;
+
+background:#ff6f00;
+
+color:#fff;
+
+border-radius:6px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-weight:bold;
+
+margin-right:12px;
+
+}
+
+.paypal-card{
+
+    margin-top:25px;
+
+    padding:20px;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    border:1px solid #e5e5e5;
+
+}
+
+.paypal-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    background:#0070ba;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+.paypal-btn:hover{
+
+    background:#005ea6;
+
+}
+
+
+.paypal-note{
+
+margin-top:12px;
+
+padding:12px;
+
+background:#fff8e6;
+
+border-left:4px solid orange;
+
+font-size:14px;
+
+border-radius:8px;
+
+}
+.paypal-btn img{
+
+    width:28px;
+
+}
