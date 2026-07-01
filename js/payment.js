@@ -26,11 +26,15 @@ const BANK_ACCOUNT =
 "1234567890123456";
 const BANK_IFSC =
 "HDFC0001234";
+
 function launchPayment(projectId, productType){
 
     currentProjectId = projectId;
+
     currentProductType = productType;
- console.log("launchPayment called");
+
+    currentOrder = null;
+
     createPaymentPopup();
 
 }
@@ -40,68 +44,49 @@ function launchPayment(projectId, productType){
 // CREATE POPUP
 //====================================================
 
+
+
 function createPaymentPopup(){
 
-    let modal =
-    document.getElementById("paymentModal");
+    let modal=document.getElementById("paymentModal");
 
-    modal.innerHTML = `
+    modal.innerHTML=`
 
-    <div class="payment-box">
+<div class="payment-box">
 
-        <div class="payment-header">
+<div class="payment-header">
 
-            <h2>Interview Prep For Insiders</h2>
+<h2>Interview Prep For Insiders</h2>
 
-            <button
-            class="close-btn"
-            onclick="closePayment()">
+<button
+class="close-btn"
+onclick="closePayment()">
 
-            ✕
+✕
 
-            </button>
+</button>
 
-        </div>
+</div>
 
-        <div id="paymentBody">
+<div id="paymentBody"></div>
 
-            <h3>Purchase Details</h3>
+</div>
 
-            <p>
-
-            Enter your details before payment.
-
-            </p>
-
-            <input
-            id="customerName"
-            type="text"
-            placeholder="Full Name">
-
-            <input
-            id="customerEmail"
-            type="email"
-            placeholder="Email Address">
-
-            <button
-            class="btn btn-primary"
-            onclick="submitOrder()">
-
-            Continue
-
-            </button>
-
-        </div>
-
-    </div>
-
-    `;
+`;
 
     modal.classList.remove("hidden");
 
+    if(currentOrder){
+
+       showPaymentScreen();
+
+    }else{
+
+        renderCustomerForm();
+
+    }
+
 }
-
-
 //====================================================
 // CLOSE POPUP
 //====================================================
@@ -255,24 +240,12 @@ async function submitOrder(){
                     }
                     if(result.hasOrders){
 
-    showOrdersPopup(result.orders);
+   showPurchaseHistory(result.orders);
 
     return;
 
 }
-// if(result.existingOrder){
 
-//     window.location.replace(
-
-//         "checkout.html?orderId=" +
-
-//         result.orderId
-
-//     );
-
-//     return;
-
-// }
 
        currentOrder = result;
         console.log(currentOrder);
@@ -875,7 +848,7 @@ function maskAccount(account){
 
 }
 
-function showOrdersPopup(orders){
+function showPurchaseHistory(orders){
 
     const body = document.getElementById("paymentBody");
 
@@ -1038,5 +1011,41 @@ function continueOrder(orderId){
 function buyAgain(){
 
     location.reload();
+
+}
+
+function renderCustomerForm(){
+
+    const body = document.getElementById("paymentBody");
+
+    body.innerHTML = `
+
+        <h3>Purchase Details</h3>
+
+        <p>
+
+        Enter your details before payment.
+
+        </p>
+
+        <input
+        id="customerName"
+        type="text"
+        placeholder="Full Name">
+
+        <input
+        id="customerEmail"
+        type="email"
+        placeholder="Email Address">
+
+        <button
+        class="btn btn-primary"
+        onclick="submitOrder()">
+
+        Continue
+
+        </button>
+
+    `;
 
 }

@@ -103,12 +103,38 @@ if(!response.success){
         const product = response.product;
 
         populateProduct(product);
+//         if (currentOrder && currentOrder.orderId) {
+//     launchPayment(
+//         currentProjectId,
+//         currentProductType,
+//         currentOrder
+//     );
+
+//     return;
+// }
+
+// Existing pending order → open payment popup directly
+if(currentOrder){
+
+    createPaymentPopup();
+
+    showPaymentScreen(
+
+        currentOrder.customerName,
+
+        currentOrder.customerEmail
+
+    );
+
+    return;
+
+}
 console.log(document.getElementById("buyButton"));
 document
     .getElementById("buyButton")
     .onclick = function(){
 
-        launchPayment(
+        launchPayment(  //for new orders
 
             currentProjectId,
 
