@@ -467,23 +467,53 @@ font-size:13px;
 color:#666;
 
 }
+
 .qr-section{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+width:100%;
+
+margin:25px auto;
 
 text-align:center;
 
-margin:20px auto;
+}
+
+#qrcode{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+width:100%;
+
+}
+
+#qrcode canvas,
+#qrcode img{
+
+margin:auto;
+
+display:block;
 
 }
 
 #qrImage{
 
-display:block;
+    display:block;
 
-margin:0 auto;
+    width:220px;
 
-width:220px;
+    height:220px;
 
-height:220px;
+    object-fit:contain;
 
 }
 

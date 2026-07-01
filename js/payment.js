@@ -286,7 +286,7 @@ function showPaymentScreen(customerName, customerEmail){
     "&pn=" +
     encodeURIComponent(currentOrder.upiName) +
     "&am=" +
-    currentOrder.amount +
+    currentOrder.price +
     "&cu=INR";
 
     // const qrUrl =
@@ -315,7 +315,7 @@ function showPaymentScreen(customerName, customerEmail){
 
 <span>Amount</span>
 
-<b>₹${currentOrder.amount}</b>
+<b>₹${currentOrder.price}</b>
 
 </div>
 
@@ -548,10 +548,13 @@ Email
     </div>
 
     `;
+const qrContainer =
+document.getElementById("qrcode");
 
+qrContainer.innerHTML = "";
     new QRCode(
 
-document.getElementById("qrcode"),
+qrContainer,
 
 {
 
@@ -573,20 +576,20 @@ height:220,
 // PAY NOW
 //====================================================
 
-function payNow(){
+// function payNow(){
 
-    const url =
-    "upi://pay?pa=" +
-    encodeURIComponent(currentOrder.upiId) +
-    "&pn=" +
-    encodeURIComponent(currentOrder.upiName) +
-    "&am=" +
-    currentOrder.amount +
-    "&cu=INR";
+//     const url =
+//     "upi://pay?pa=" +
+//     encodeURIComponent(currentOrder.upiId) +
+//     "&pn=" +
+//     encodeURIComponent(currentOrder.upiName) +
+//     "&am=" +
+//     currentOrder.price +
+//     "&cu=INR";
 
-    window.location.href = url;
+//     window.location.href = url;
 
-}
+// }
 
 
 //====================================================
@@ -612,20 +615,20 @@ function copyUPI(){
 // OPEN UPI
 //====================================================
 
-function openUPI(app){
+// function openUPI(app){
 
-    const url =
-    "upi://pay?pa="+
-    encodeURIComponent(currentOrder.upiId)+
-    "&pn="+
-    encodeURIComponent(currentOrder.upiName)+
-    "&am="+
-    currentOrder.amount+
-    "&cu=INR";
+//     const url =
+//     "upi://pay?pa="+
+//     encodeURIComponent(currentOrder.upiId)+
+//     "&pn="+
+//     encodeURIComponent(currentOrder.upiName)+
+//     "&am="+
+//     currentOrder.price+
+//     "&cu=INR";
 
-    window.location.href=url;
+//     window.location.href=url;
 
-}
+// }
 
 
 
