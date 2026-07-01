@@ -296,7 +296,7 @@ function showPaymentScreen(customerName, customerEmail){
 <hr>
 <div class="qr-section" id="qrcode">
 
-<img id="qrImage" class="qr-image">
+<img id="qrImage">
 
 </div>
 
@@ -352,7 +352,7 @@ After successful PayPal payment, please upload your PayPal payment receipt or sc
 
         <img
             src="images/paypal.png"
-            alt="PayPal">
+            alt="PayPal" class="paypal-logo">
 
         <span>Pay with PayPal</span>
 

@@ -539,31 +539,21 @@ margin-right:12px;
 
 .paypal-btn{
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+align-items:center;
 
-    align-items:center;
+justify-content:center;
 
-    gap:12px;
+gap:10px;
 
-    width:100%;
+}
 
-    margin-top:15px;
+.paypal-logo{
 
-    padding:14px;
+height:24px;
 
-    background:#0070ba;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-weight:600;
-
-    border-radius:10px;
-
-    transition:.3s;
+width:auto;
 
 }
 
