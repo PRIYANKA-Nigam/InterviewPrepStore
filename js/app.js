@@ -114,6 +114,7 @@ if(!response.success){
 // }
 
 // Existing pending order → open payment popup directly
+console.log("CURRENT ORDER =", currentOrder);
 if(currentOrder){
 
     createPaymentPopup();

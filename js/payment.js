@@ -277,7 +277,7 @@ async function submitOrder(){
 //====================================================
 
 function showPaymentScreen(customerName, customerEmail){
-
+console.log("showPaymentScreen currentOrder =", currentOrder);
     const body = document.getElementById("paymentBody");
 
     const upiLink =
