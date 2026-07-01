@@ -874,3 +874,169 @@ function maskAccount(account){
     account.slice(-4);
 
 }
+
+function showOrdersPopup(orders){
+
+    const body = document.getElementById("paymentBody");
+
+    let html = `
+
+    <h2 class="payment-title">
+
+    📦 Your Purchase History
+
+    </h2>
+
+    <p class="payment-desc">
+
+    We found previous purchases for this product.
+
+    </p>
+
+    `;
+
+    orders.forEach(order=>{
+
+        let statusColor="orange";
+        let actionButton="";
+
+        if(
+            order.orderStatus==="Pending" &&
+            order.delivered==="No"
+        ){
+
+            statusColor="#f59e0b";
+
+            actionButton=`
+
+<button
+class="btn-orange full-btn"
+onclick="continueOrder('${order.orderId}')">
+
+Continue Payment
+
+</button>
+
+`;
+
+        }
+        else if(order.delivered==="Yes"){
+
+            statusColor="#22c55e";
+
+            actionButton=`
+
+<button
+class="btn-green full-btn"
+onclick="downloadOrder('${order.orderId}')">
+
+Download Again
+
+</button>
+
+`;
+
+        }
+        else{
+
+            statusColor="#ef4444";
+
+            actionButton=`
+
+<button
+class="btn-blue full-btn"
+onclick="buyAgain()">
+
+Buy Again
+
+</button>
+
+`;
+
+        }
+
+        html+=`
+
+<div class="payment-card">
+
+<div class="payment-row">
+
+<span>Order ID</span>
+
+<b>${order.orderId}</b>
+
+</div>
+
+<div class="payment-row">
+
+<span>Date</span>
+
+<b>${new Date(order.orderDate).toLocaleDateString()}</b>
+
+</div>
+
+<div class="payment-row">
+
+<span>Status</span>
+
+<b style="color:${statusColor}">
+
+${order.orderStatus}
+
+</b>
+
+</div>
+
+<div class="payment-row">
+
+<span>Delivery</span>
+
+<b>${order.delivered}</b>
+
+</div>
+
+${actionButton}
+
+</div>
+
+`;
+
+    });
+
+    body.innerHTML=html;
+
+    document.getElementById("paymentModal").style.display="block";
+
+}
+
+function closeOrdersModal(){
+
+document.getElementById("ordersModal").style.display="none";
+
+}
+
+
+function downloadOrder(orderId){
+
+    showMessage(
+
+        "Preparing your download...",
+
+        "info"
+
+    );
+
+}
+
+function continueOrder(orderId){
+
+    window.location.href=
+    "checkout.html?orderId="+orderId;
+
+}
+
+function buyAgain(){
+
+    location.reload();
+
+}
