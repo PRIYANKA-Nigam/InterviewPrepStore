@@ -8,7 +8,7 @@
 "name":"Greetings App",
 
 "desc":"This is an app which you can use in different different occassions to wish or greet somebody with good messages. You can greet someone with good thoughts or can wish somebody in different style.I have also added here rivetting jokes,quotes and slogans that are spoken by famous dignitaries or politicians. You can send greetings to someone as drawable or as normal text or by encrypted format as QR.Memory occupancy of this app in KB and you can cache some good thoughts or greetings in the app memory as well.",
- "icon":"images/greetings.png",
+ "icon":"images/greetings.PNG",
   "features":[
       "Tab Layout",
       "SharedPreferences",
@@ -57,7 +57,7 @@
 ,
 
 "desc":"This is the novel app for those who have habit to read novels regularly. I have added different categories of novels in this app based on the interest of the reader and the novel ratings.All these novels have high star rating and of famous foreign and indian writers.You can read the novel , novel summary or just listen to these novels in audio format.I have included online dictionary to make search meanings.And have given a bottom tab to bookmark your important novel.",
- "icon":"images/novel.png",
+ "icon":"images/novel.PNG",
   "features":[
       "Bottom Navigation Activity",
       "Navigation Drawer",
@@ -91,7 +91,7 @@
 ,
 
 "desc":"This is the quiz app. Here I have added multiple quizzes of different technology topics and languages. The quizzes are time based and need to be completed within the time slot; otherwise you will get popup as \"Times Up\". The result score and status will be saved in the result history tab. You can also view the result in graphical format using bar or pie chart. Screenshot is not allowed during the assessment. You can also enable dark mode in the app.",
- "icon":"images/quiz.png",
+ "icon":"images/quiz.PNG",
   "features":[
       "Java Thread class",
       "Timer",
@@ -125,7 +125,7 @@
 ,
 
 "desc":"This is the app for all the admirer of dieties. I have included here various shlok,arti,chalisa,mantra that are chanted during any pooja processing. You can read the mantras or just listen to it in audio format. You can also translate the language to Hindi or English . And can set your wallpaper image with the god/goddess image from within the app. I have added good animation in every page and covered most of the common spoken shloks."
-, "icon":"images/shlok.png",
+, "icon":"images/shlok.PNG",
   "features":[
       "Grid Layout",
       "Horizontal+Verticle RecyclerView",
@@ -160,7 +160,7 @@
 ,
 
 "desc":"This is the app to regulate your monthly budget by maintaining a record of all your expenses. This app helps you save money by maintaining a proper inventory of your expenditure. You can split the gross amount with other members added to the app and make payments online via UPI or card using Razorpay. Updating and deleting one or multiple records from your inventory history is supported, and all records are maintained with proper date and time.",
- "icon":"images/inventory.png",
+ "icon":"images/inventory.PNG",
   "features":[
       "Custom ListView with dynamic updates",
       "RajorPay Payment Integration",
@@ -192,7 +192,7 @@
 ,
 
 "desc":"This is AI eye detecting video player app.In this app, you can streamed youtube videos online from within the app in the normal mode and also you can watch the video in AI mode .In AI mode, if you are not watching the screen or your eyes are off than in that case video will get paused.It will only be played when your eyes are on and you are watching the screen.You can also filter your search item from the list , share the app link with another app/person view source code of all those apps and also to download the APK/ZIP files of the apps.",
- "icon":"images/video.png",
+ "icon":"images/video.PNG",
   "features":[
       "WebView",
       "Custom RecyclerView",
@@ -223,7 +223,7 @@
 ,
 
 "desc":"This is a notification reminder app whenever you are running out of time or you can't understand where how your time is spending doing nothing than it's a good app for you that will notify you for all your activities on time by ringing an alarm. You can turn the alarm off/on using toggle on/off button and can also turned off all the alarms at once.",
- "icon":"images/notification.png",
+ "icon":"images/notification.PNG",
   "features":[
       "BroadcastReceiver",
       "DialogFragment",
@@ -284,7 +284,7 @@
 ,
 
 "desc":"It's an attendence app in which u can enroll your students , take their daily attendence and mark them present or absent.U can view attendance status of any day and can export it in csv/pdf format.",
- "icon":"images/attendance.png",
+ "icon":"images/attendance.PNG",
   "features":[
       "SQLite DB",
       "ListView",
@@ -317,7 +317,7 @@
 ,
 
 "desc":"This is the app to check general conversion parameters like currency, temperature, scale, weight and liquid volume. I also added features to check your BMI, sensor-based foot step counting, measurement of screen resolution and other utilities. You can check the conversion details of all these parameters with accurate calculations.",
- "icon":"images/convertor.png",
+ "icon":"images/convert.PNG",
   "features":[
       "Spinner",
       "custom recyclerView",

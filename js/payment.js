@@ -232,7 +232,7 @@ async function submitOrder(){
 
 });
 
-
+console.log("Create Order Result =", result);
                     if(!result.success){
 
                         throw result.message;
