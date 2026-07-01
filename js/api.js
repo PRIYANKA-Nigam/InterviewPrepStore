@@ -83,3 +83,15 @@
         });
 
     }
+
+    async function fetchOrder(orderId){
+
+    return await apiPost({
+
+        action:"getOrderById",
+
+        orderId:orderId
+
+    });
+
+}

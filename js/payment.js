@@ -277,7 +277,13 @@ console.log("showPaymentScreen currentOrder =", currentOrder);
     body.innerHTML = `
 
    <h2 class="payment-title">
+<button
+class="btn-orange full-btn"
+onclick="backToArticle()">
 
+🏠 Back to Article
+
+</button>
 🎉 Order Created Successfully
 
 </h2>
@@ -529,13 +535,7 @@ Email
     </div>
 <div style="margin-top:20px;">
 
-<button
-class="btn-orange full-btn"
-onclick="backToArticle()">
 
-🏠 Back to Article
-
-</button>
 
 </div>
     `;
@@ -853,7 +853,13 @@ function showPurchaseHistory(orders){
     const body = document.getElementById("paymentBody");
 
     let html = `
+<button
+class="btn-orange full-btn"
+onclick="backToArticle()">
 
+🏠 Back to Article
+
+</button>
     <h2 class="payment-title">
 
     📦 Your Purchase History
@@ -867,13 +873,6 @@ function showPurchaseHistory(orders){
     </p>
     <div style="margin-top:20px;">
 
-<button
-class="btn-orange full-btn"
-onclick="backToArticle()">
-
-🏠 Back to Article
-
-</button>
 
 </div>
 
@@ -1000,15 +999,51 @@ document.getElementById("ordersModal").style.display="none";
 }
 
 
-function downloadOrder(orderId){
+async function downloadOrder(orderId){
 
-    showMessage(
+    try{
 
-        "Preparing your download...",
+        showMessage("Preparing your download...","info");
 
-        "info"
+        const response = await fetchOrder(orderId);
 
-    );
+        if(!response.success){
+
+            throw new Error(response.message);
+
+        }
+
+        const order = response.order;
+
+        if(order.delivered !== "Yes"){
+
+            showMessage(
+                "Your order is still under verification."
+            );
+
+            return;
+
+        }
+
+        if(order.deliveryType === "LINK"){
+
+    window.open(order.deliveryLink,"_blank");
+
+}else{
+
+    location.href = order.deliveryLink;
+
+}
+
+    }
+
+    catch(e){
+
+        console.error(e);
+
+        showMessage(e.message);
+
+    }
 
 }
 
@@ -1105,7 +1140,6 @@ function showVerificationSubmitted(){
 
         </button>
 <div style="margin-top:20px;">
-
 <button
 class="btn-orange full-btn"
 onclick="backToArticle()">
