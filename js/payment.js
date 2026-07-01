@@ -133,9 +133,55 @@ function validEmail(email){
 // SHOW MESSAGE
 //====================================================
 
-function showMessage(msg){
+function showMessage(message, type = "info") {
 
-    alert(msg);
+    const oldToast = document.querySelector(".custom-toast");
+
+    if (oldToast) {
+        oldToast.remove();
+    }
+
+    const toast = document.createElement("div");
+
+    toast.className = `custom-toast ${type}`;
+
+    toast.innerHTML = `
+        <div class="toast-icon">
+            ${
+                type === "success"
+                    ? "✅"
+                    : type === "error"
+                    ? "❌"
+                    : type === "warning"
+                    ? "⚠️"
+                    : "ℹ️"
+            }
+        </div>
+
+        <div class="toast-text">
+            ${message}
+        </div>
+    `;
+
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+
+        toast.classList.add("show");
+
+    });
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        },300);
+
+    },3500);
 
 }
 
@@ -202,24 +248,31 @@ async function submitOrder(){
 });
 
 
-        if(!result.success){
+                    if(!result.success){
 
-            throw result.message;
+                        throw result.message;
 
-        }
-if(result.existingOrder){
+                    }
+                    if(result.hasOrders){
 
-    window.location.replace(
-
-        "checkout.html?orderId=" +
-
-        result.orderId
-
-    );
+    showOrdersPopup(result.orders);
 
     return;
 
 }
+// if(result.existingOrder){
+
+//     window.location.replace(
+
+//         "checkout.html?orderId=" +
+
+//         result.orderId
+
+//     );
+
+//     return;
+
+// }
 
        currentOrder = result;
         console.log(currentOrder);
@@ -294,9 +347,9 @@ function showPaymentScreen(customerName, customerEmail){
 </div>
 
 <hr>
-<div class="qr-section" id="qrcode">
+<div class="qr-section">
 
-<img id="qrImage">
+<div id="qrcode"></div>
 
 </div>
 
@@ -535,7 +588,7 @@ width:220,
 
 height:220,
 
-correctLevel:QRCode.CorrectLevel.H
+// correctLevel:QRCode.CorrectLevel.H
 
 }
 
@@ -615,7 +668,7 @@ currentOrder.orderId
 
 );
 
-alert(
+showMessage(
 
 "Order ID copied."
 
@@ -704,7 +757,7 @@ async function uploadScreenshot(){
 
     if(fileInput.files.length===0){
 
-        alert("Please select a screenshot.");
+      showMessage("Please select a screenshot.");
 
         return;
 
@@ -715,7 +768,7 @@ async function uploadScreenshot(){
     // Validate file type
     if(!file.type.startsWith("image/")){
 
-        alert("Only JPG, JPEG or PNG images are allowed.");
+        showMessage("Only JPG, JPEG or PNG images are allowed.");
 
         return;
 
@@ -724,7 +777,7 @@ async function uploadScreenshot(){
     // Validate file size (5 MB max)
     if(file.size > 5 * 1024 * 1024){
 
-        alert("Maximum file size is 5 MB.");
+        showMessage("Maximum file size is 5 MB.");
 
         return;
 
