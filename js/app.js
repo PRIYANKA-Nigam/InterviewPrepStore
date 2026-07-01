@@ -103,15 +103,6 @@ if(!response.success){
         const product = response.product;
 
         populateProduct(product);
-//         if (currentOrder && currentOrder.orderId) {
-//     launchPayment(
-//         currentProjectId,
-//         currentProductType,
-//         currentOrder
-//     );
-
-//     return;
-// }
 
 // Existing pending order → open payment popup directly
 console.log("CURRENT ORDER =", currentOrder);
