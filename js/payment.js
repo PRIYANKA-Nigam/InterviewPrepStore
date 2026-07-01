@@ -1014,6 +1014,7 @@ async function downloadOrder(orderId){
         }
 
         const order = response.order;
+        console.log(order);
 
         if(order.delivered !== "Yes"){
 
@@ -1133,12 +1134,12 @@ function showVerificationSubmitted(){
         </p>
 
         <button
-        class="btn-orange full-btn"
-        onclick="this.closest('.verification-modal').remove()">
+class="btn-orange full-btn"
+onclick="closeVerification()">
 
-            Close
+Close
 
-        </button>
+</button>
 <div style="margin-top:20px;">
 <button
 class="btn-orange full-btn"
@@ -1154,5 +1155,23 @@ onclick="backToArticle()">
     `;
 
     document.body.appendChild(modal);
+
+}
+
+function closeVerification(){
+
+    document
+        .querySelector(".verification-modal")
+        ?.remove();
+
+    closePayment();
+
+    showMessage(
+
+        "✅ Thank you! We'll email your download after verification.",
+
+        "success"
+
+    );
 
 }
