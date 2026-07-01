@@ -3,7 +3,7 @@
 
         return await apiPost({
 
-            action:"getOrder",
+             action: "getOrderById",
 
             orderId:orderId
 

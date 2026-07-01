@@ -39,6 +39,28 @@ document.addEventListener(
 
 async function initializeCheckout(){
 
+    const orderId = new URLSearchParams(location.search).get("orderId");
+
+if(orderId){
+
+    const response = await fetchOrder(orderId);
+
+    if(!response.success){
+
+        showToast(response.message);
+
+        return;
+
+    }
+
+    currentOrder = response.order;
+
+    currentProjectId = currentOrder.projectId;
+
+    currentProductType = currentOrder.productType;
+
+}
+
    if (!currentProjectId || !currentProductType) {
 
     if (
