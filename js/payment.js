@@ -1026,6 +1026,14 @@ async function downloadOrder(orderId){
 
         }
 
+        if (!order.deliveryLink) {
+
+    showMessage(
+        "Download link is unavailable for this order. Please contact support."
+    );
+
+    return;
+}
         if(order.deliveryType === "LINK"){
 
     window.open(order.deliveryLink,"_blank");
